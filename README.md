@@ -1,2 +1,3 @@
 # vim-redish
-A vim colorscheme
+
+A (neo)vim colorscheme using redish colors.
