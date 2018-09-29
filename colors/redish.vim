@@ -1,7 +1,7 @@
 "
 " VIM COLOR SCHEME
 "
-" Maintainer:   Niko Humalamäki
+" Maintainer:   aparaatti
 " Inspirations: murphy, Gruvbox
 "
 
