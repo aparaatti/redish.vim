@@ -61,7 +61,7 @@ function! s:SetHl(group, fg, bg)
         \ 'guibg=' . a:bg[0],
         \ 'ctermbg=' . a:bg[1],
         \ ] , ' ')
-endfuncti.n
+endfunction
 
 call s:SetHl('Normal', s:normal_fg, s:normal_bg)
 call s:SetHl('Visual', s:slightred, s:gray)
