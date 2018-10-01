@@ -3,6 +3,7 @@
 "
 " Maintainer:   aparaatti
 " Inspirations: murphy, Gruvbox
+" Thanks:       bravekarma@reddit
 "
 
 hi clear
@@ -46,13 +47,12 @@ let s:darkgray            = [ '#121212', 233 ]
 let s:gray                = [ '#303030', 236 ]
 let s:lightgray           = [ '#606060', 240 ]
 
+
 """"""""""""""""
 " COLOR GROUPS "
 """"""""""""""""
 
-"""""""""""""""""""""""""""
 " TODO: link sames sanely "
-"""""""""""""""""""""""""""
 
 function! s:SetHl(group, fg, bg)
   execute join([ 'hi', a:group,
