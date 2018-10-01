@@ -98,14 +98,13 @@ call s:SetHl('TermCursor', s:normal_bg, ['highlight', 202])
 call s:SetHl('TermCursorNC', s:normal_bg, ['darkhighlight', 130])
 
 " LINES AND COLUMNS "
-call s:SetHl('StatusLine', s:red_dim, s:darkgray)
-call s:SetHl('StatusLineNC', s:slightred, s:darkgray)
+call s:SetHl('StatusLine', s:slightred, s:darkgray)
+call s:SetHl('StatusLineNC', s:normal_fg, s:darkgray)
 call s:SetHl('VertSplit', s:gray, s:darkgray)
 
 call s:SetHl('TabLine', s:normal_fg, s:darkgray)
 call s:SetHl('TabLineSel', s:slightred, s:normal_bg)
 call s:SetHl('TabLineFill', s:gray, s:darkgray)
-call s:SetHl('VemTablineTabNormal', s:normal_fg, s:darkgray)
 
 call s:SetHl('SignColumn', s:normal_fg, s:gray)
 
@@ -145,8 +144,9 @@ call s:SetHl('MatchParen', s:black, s:slightestred)
 call s:SetHl('Search', s:black, s:slightred)
 call s:SetHl('Substitute', s:black, s:slightred)
 
-" VIMWIKI "
+" Plugin specific "
 call s:SetHl('VimwikiBold', s:slightestred, s:normal_bg)
+call s:SetHl('VemTablineTabNormal', s:normal_fg, s:darkgray)
 
 
 """"""""""""""
