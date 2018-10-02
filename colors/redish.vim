@@ -3,7 +3,7 @@
 "
 " Maintainer:   aparaatti
 " Inspirations: murphy, Gruvbox
-" Thanks:       bravekarma@reddit
+" Thanks:       bravekarma@reddit (commit "curren statusline text pink, non current white") 
 "
 
 hi clear
