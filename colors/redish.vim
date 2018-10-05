@@ -55,12 +55,17 @@ let s:lightgray           = [ '#606060', 240 ]
 " TODO: link sames sanely "
 
 function! s:SetHl(group, fg, bg)
-  execute join([ 'hi', a:group,
+  execute join([ 'highlight', a:group,
         \ 'guifg=' . a:fg[0],
         \ 'ctermfg=' . a:fg[1],
         \ 'guibg=' . a:bg[0],
         \ 'ctermbg=' . a:bg[1],
         \ ] , ' ')
+endfunction
+
+function! s:Link(group_inheriting, group_inherited)
+    execute join([ 'highlight clear', a:group_inheriting ], ' ')
+    execute join([ 'highlight link', a:group_inheriting, a:group_inherited ], ' ')
 endfunction
 
 call s:SetHl('Normal', s:normal_fg, s:normal_bg)
@@ -77,7 +82,7 @@ call s:SetHl('Special', s:red, s:normal_bg)
 call s:SetHl('SpecialKey', s:focus_fg, s:normal_bg)
 call s:SetHl('Statement', s:slightestred, s:normal_bg)
 call s:SetHl('Title', s:slightestred, s:normal_bg)
-call s:SetHl('Todo', s:red, s:normal_bg)
+call s:SetHl('Todo', s:normal_bg, s:red)
 call s:SetHl('Type', s:red, s:normal_bg)
 call s:SetHl('NonText', s:darkgray, s:normal_bg)
 
@@ -94,8 +99,14 @@ call s:SetHl('PmenuThumb', s:lighthighlight, s:normal_bg)
 call s:SetHl('WildMenu', s:slightestred, s:gray)
 
 " CURSOR "
-call s:SetHl('TermCursor', s:normal_bg, ['highlight', 202])
-call s:SetHl('TermCursorNC', s:normal_bg, ['darkhighlight', 130])
+
+if has('nvim')
+    call s:SetHl('TermCursor', s:normal_bg, [202, 202])
+    call s:SetHl('TermCursorNC', s:normal_bg, [130, 130])
+else
+    call s:Link('StatusLineTerm', 'StatusLine') 
+    call s:Link('StatusLineTermNC', 'StatusLineNc') 
+end
 
 " LINES AND COLUMNS "
 call s:SetHl('StatusLine', s:slightred, s:darkgray)
@@ -130,7 +141,9 @@ call s:SetHl('Error', s:normal_bg, s:focus_fg)
 call s:SetHl('ErrorMsg',   s:stand_out1, s:normal_bg)
 call s:SetHl('WarningMsg', s:stand_out1, s:normal_bg)
 
-highlight link ErrorMsg NvimInternalError
+if has('nvim')
+    call s:Link('ErrorMsg', 'NvimInternalError')
+end
 
 " SPELL "
 call s:SetHl('SpellBad', s:red, s:normal_bg)
@@ -172,7 +185,7 @@ call s:SetHlFormat('Special', 'bold', 'NONE')
 call s:SetHlFormat('SpecialKey', 'bold', 'NONE')
 call s:SetHlFormat('Statement', 'bold', 'bold')
 call s:SetHlFormat('Title', 'bold', 'bold')
-call s:SetHlFormat('Todo', 'standout', 'NONE')
+call s:SetHlFormat('Todo', 'bold', 'NONE')
 call s:SetHlFormat('Type', 'bold', 'bold')
 
 " Misc "
@@ -210,8 +223,8 @@ call s:SetHlFormat('ErrorMsg', 'NONE', 'NONE')
 call s:SetHlFormat('WarningMsg', 'NONE', 'NONE')
 
 " Matches "
-call s:SetHlFormat('IncSearch', 'NONE', 'NONE')
+call s:SetHlFormat('IncSearch', 'bold', 'bold')
 call s:SetHlFormat('MatchParen', 'bold', 'bold')
-call s:SetHlFormat('Search', 'NONE', 'NONE')
-call s:SetHlFormat('Substitute', 'NONE', 'NONE')
+call s:SetHlFormat('Search', 'bold', 'bold')
+call s:SetHlFormat('Substitute', 'bold', 'bold')
 
