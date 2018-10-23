@@ -3,7 +3,7 @@
 "
 " Maintainer:   aparaatti
 " Inspirations: murphy, Gruvbox
-" Thanks:       bravekarma@reddit (commit "curren statusline text pink, non current white") 
+" Thanks:       bravekarma@reddit (commit "curren statusline text pink, non current white")
 "
 
 hi clear
@@ -26,27 +26,23 @@ else
     let s:normal_bg           = [ '#111111', '235' ]
 endif
 
-let s:normal_fg           = [ '#B2B2B2', 249 ]
+let s:normal_fg           = [ '#C2C2C2', 250 ] " 250 249
 let s:focus_fg            = [ '#af5f5f', 131 ]
 
 let s:lighthighlight      = [ '#FF875F', 209 ]
-let s:highlight           = [ '#FF5F00', 202 ]
-
 let s:stand_out1          = [ '#FF00FF', 201 ]
-let s:stand_out2          = [ '#FFFF00', 226 ]
-let s:stand_out3          = [ '#00FF00', 70  ]
+let s:stand_out2          = [ '#FFCC00', 208 ]
 
 let s:slightestred        = [ '#D78787', 174 ]
 let s:slightred           = [ '#aa4538', 167 ]
 let s:red                 = [ '#D75F5F', 167 ]
-let s:red_dim             = [ '#AF0000', 124 ]
-let s:darkred             = [ '#600000', 52 ]
+let s:red_dim             = [ '#AF0000', 196 ]
+let s:red_dimmer          = [ '#9F0000', 124 ]
 
-let s:black               = [ 'Black', 'Black' ]
-let s:darkgray            = [ '#121212', 233 ]
-let s:gray                = [ '#303030', 236 ]
 let s:lightgray           = [ '#606060', 240 ]
-
+let s:gray                = [ '#303030', 236 ]
+let s:darkgray            = [ '#121212', 233 ]
+let s:black               = [ 'Black', 'Black' ]
 
 """"""""""""""""
 " COLOR GROUPS "
@@ -72,7 +68,7 @@ call s:SetHl('Normal', s:normal_fg, s:normal_bg)
 call s:SetHl('Visual', s:slightred, s:gray)
 
 " SYNTAX "
-call s:SetHl('Comment', s:red_dim, s:normal_bg)
+call s:SetHl('Comment', s:red_dimmer, s:normal_bg)
 call s:SetHl('Constant', s:slightestred, s:normal_bg)
 call s:SetHl('Identifier', s:slightred, s:normal_bg)
 call s:SetHl('Ignore', s:red, s:normal_bg)
@@ -98,14 +94,13 @@ call s:SetHl('PmenuSbar', s:lighthighlight, s:normal_bg)
 call s:SetHl('PmenuThumb', s:lighthighlight, s:normal_bg)
 call s:SetHl('WildMenu', s:slightestred, s:gray)
 
-" CURSOR "
-
+" TERMINAL "
 if has('nvim')
     call s:SetHl('TermCursor', s:normal_bg, [202, 202])
     call s:SetHl('TermCursorNC', s:normal_bg, [130, 130])
 else
-    call s:Link('StatusLineTerm', 'StatusLine') 
-    call s:Link('StatusLineTermNC', 'StatusLineNc') 
+    call s:Link('StatusLineTerm', 'StatusLine')
+    call s:Link('StatusLineTermNC', 'StatusLineNc')
 end
 
 " LINES AND COLUMNS "
@@ -119,18 +114,19 @@ call s:SetHl('TabLineFill', s:gray, s:darkgray)
 
 call s:SetHl('SignColumn', s:normal_fg, s:gray)
 
-call s:SetHl('CursorColumn', s:normal_bg, s:red)
-call s:SetHl('CursorLine', s:red_dim, s:normal_bg)
-call s:SetHl('ColorColumn',[ s:lighthighlight[0], s:normal_fg[1] ], s:normal_bg)
+call s:SetHl('CursorLine', s:red_dimmer, s:normal_bg)
+call s:Link('CursorColumn', 'CursorLine')
+
+call s:SetHl('ColorColumn', s:slightestred, s:normal_bg)
 
 " FOLD "
 call s:SetHl('Folded', s:lightgray, s:gray)
-call s:SetHl('FoldColumn', s:lightgray, s:gray)
+call s:Link('FoldColumn', 'Folded')
 
 " DIFF "
 call s:SetHl('DiffAdd', s:focus_fg, s:normal_bg)
 call s:SetHl('DiffChange', s:slightestred, s:gray)
-call s:SetHl('DiffDelete', s:darkred, s:normal_bg)
+call s:SetHl('DiffDelete', s:red_dim, s:normal_bg)
 call s:SetHl('DiffText', s:red_dim, s:gray)
 
 " ERRORS, WARNINGS AND MESSAGES "
@@ -153,11 +149,11 @@ call s:SetHl('SpellLocal', s:stand_out2, s:normal_bg)
 
 " SEARCH MATCHES "
 call s:SetHl('IncSearch', s:black, s:lighthighlight)
-call s:SetHl('MatchParen', s:black, s:slightestred)
+call s:SetHl('MatchParen', s:stand_out2, s:black)
 call s:SetHl('Search', s:black, s:slightred)
 call s:SetHl('Substitute', s:black, s:slightred)
 
-" Plugin specific "
+" PLUGIN SPECIFIC "
 call s:SetHl('VimwikiBold', s:slightestred, s:normal_bg)
 call s:SetHl('VemTablineTabNormal', s:normal_fg, s:darkgray)
 
