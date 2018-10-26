@@ -80,12 +80,13 @@ call s:SetHl('Statement', s:slightestred, s:normal_bg)
 call s:SetHl('Title', s:slightestred, s:normal_bg)
 call s:SetHl('Todo', s:normal_bg, s:red)
 call s:SetHl('Type', s:red, s:normal_bg)
-call s:SetHl('NonText', s:darkgray, s:normal_bg)
+call s:SetHl('NonText', s:lightgray, s:normal_bg)
 
 " MISC "
 call s:SetHl('Underlined', s:lighthighlight, s:normal_bg)
 call s:SetHl('Directory', s:focus_fg, s:normal_bg)
 call s:SetHl('LineNr', s:red, s:normal_bg)
+call s:SetHl('EndOfBuffer', s:black, s:normal_bg)
 
 " MENU "
 call s:SetHl('Pmenu', s:slightestred, s:gray)
